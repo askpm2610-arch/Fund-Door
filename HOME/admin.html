@@ -9,11 +9,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 body { font-family: 'Inter', sans-serif; background: #f4f7f9; min-height: 100vh; }
-.navbar { background: #064734; height: 70px; display: flex; align-items: center; justify-content: space-between; padding: 0 40px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-.logo { font-size: 28px; font-weight: 700; color: #E0FFC2; text-decoration: none; }
-.nav-links { display: flex; gap: 24px; align-items: center; }
-.nav-links a { color: rgba(255,255,255,0.9); text-decoration: none; font-weight: 500; font-size: 15px; }
-.nav-links a:hover { color: #E0FFC2; }
+.navbar { background: #064734 !important; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+.logo { font-size: 26px; font-weight: 700; color: #E0FFC2 !important; text-decoration: none; }
+.nav-links { display: flex; gap: 24px; align-items: center; flex-wrap: wrap; }
+.nav-links a { color: rgba(255,255,255,0.9) !important; text-decoration: none; font-weight: 500; font-size: 15px; }
+.nav-links a:hover { color: #E0FFC2 !important; }
+.navbar-toggler { border-color: rgba(255,255,255,0.5); }
+.navbar-toggler-icon { filter: invert(1); }
 .page-header { padding: 60px 0 20px; text-align: center; }
 .page-header h1 { color: #064734; font-size: 2.8rem; }
 .page-header p { color: #556; max-width: 700px; margin: 0 auto; }
@@ -38,13 +40,20 @@ body { font-family: 'Inter', sans-serif; background: #f4f7f9; min-height: 100vh;
 </style>
 </head>
 <body>
-<nav class="navbar">
-  <a href="./index.html" class="logo">Fund Door</a>
-  <div class="nav-links">
-    <a href="./dashboard.html">Dashboard</a>
-    <a href="./campaigns.html">Campaigns</a>
-    <a href="./create-project.html">Create Campaign</a>
-    <button class="logout-btn" id="logoutButton">Logout</button>
+<nav class="navbar navbar-expand-lg">
+  <div class="container">
+    <a href="./index.html" class="logo navbar-brand">Fund Door</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <div class="nav-links ms-auto">
+        <a href="./dashboard.html">Dashboard</a>
+        <a href="./campaigns.html">Campaigns</a>
+        <a href="./create-project.html">Create Campaign</a>
+        <button class="logout-btn ms-2" id="logoutButton">Logout</button>
+      </div>
+    </div>
   </div>
 </nav>
 
