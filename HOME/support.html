@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fund Door - Support Center</title>
+
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+body {
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #064734 0%, #E0FFC2 100%);
+  min-height: 100vh;
+}
+
+/* Custom Green Theme */
+.navbar {
+  background: #064734;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  position: relative;
+  z-index: 10;
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: 700;
+  color: #E0FFC2;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.logo:hover {
+  color: #ffffff;
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.nav-links a {
+  color: rgba(255,255,255,0.9);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.nav-links a:hover {
+  color: #E0FFC2;
+  transform: translateY(-1px);
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 50%;
+  background: #E0FFC2;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.btn-custom {
+  background: linear-gradient(45deg, #064734, #E0FFC2);
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 50px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(6, 71, 52, 0.3);
+}
+
+.btn-custom:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(6, 71, 52, 0.4);
+  color: white;
+}
+
+.btn-outline-custom {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  padding: 12px 30px;
+  border-radius: 50px;
+  font-weight: 600;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.btn-outline-custom:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+  color: white;
+}
+
+/* Hero Section */
+.hero-section {
+  padding: 100px 0;
+  text-align: center;
+  color: white;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  background: linear-gradient(45deg, #E0FFC2, #ffffff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-subtitle {
+  font-size: 1.3rem;
+  margin-bottom: 40px;
+  opacity: 0.9;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Support Sections */
+.support-section {
+  padding: 80px 0;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  margin: 20px 0;
+  border-radius: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.support-section h2 {
+  color: #064734;
+  font-weight: 700;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.support-card {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 18px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  min-height: 100%;
+}
+
+.support-card h3 {
+  color: #064734;
+  margin-bottom: 15px;
+}
+
+.support-card ul {
+  padding-left: 20px;
+}
+
+.support-card li {
+  margin-bottom: 10px;
+  color: #444;
+}
+
+.support-card-highlight {
+  border: 2px solid #064734;
+  background: rgba(224, 255, 194, 0.9);
+}
+
+.support-section h3 {
+  color: #064734;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.support-section p {
+  color: #333;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.faq-item {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.faq-question {
+  font-weight: 600;
+  color: #064734;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.faq-answer {
+  margin-top: 10px;
+  color: #555;
+  display: none;
+}
+
+.contact-form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.contact-form .form-group {
+  margin-bottom: 20px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 15px;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: #064734;
+}
+
+/* Footer */
+.footer {
+  background-color: #064734;
+  color: white;
+  padding: 60px 0 30px;
+}
+
+.footer h5 {
+  color: #E0FFC2;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.footer p {
+  line-height: 1.6;
+  margin-bottom: 15px;
+  opacity: 0.9;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li {
+  margin-bottom: 8px;
+}
+
+.footer-links a {
+  color: rgba(255,255,255,0.8);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #E0FFC2;
+}
+
+.social-links {
+  display: flex;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.social-links a {
+  color: white;
+  font-size: 20px;
+  transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+  color: #E0FFC2;
+  transform: translateY(-2px);
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.1);
+  margin-top: 40px;
+  padding-top: 20px;
+  text-align: center;
+  opacity: 0.8;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .btn-custom, .btn-outline-custom {
+    width: 200px;
+  }
+
+  .navbar {
+    padding: 0 20px;
+    height: 60px;
+  }
+
+  .nav-links {
+    gap: 20px;
+  }
+
+  .logo {
+    font-size: 24px;
+  }
+
+  .support-section {
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 40px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .navbar {
+    padding: 0 20px;
+    height: 60px;
+  }
+
+  .nav-links {
+    gap: 15px;
+  }
+
+  .logo {
+    font-size: 20px;
+  }
+
+  .btn-custom, .btn-outline-custom {
+    width: 180px;
+    padding: 10px 20px;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="navbar">
+  <a href="./index.html" class="logo">Fund Door</a>
+  <div class="nav-links">
+    <a href="./index.html">Home</a>
+    <a href="./about.html">About</a>
+    <a href="./contact.html">Contact</a>
+    <a href="./support.html">Support</a>
+    <a href="./form/signup.html">Sign Up</a>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero-section">
+  <div class="container">
+    <h1 class="hero-title">Support Center</h1>
+    <p class="hero-subtitle">Get help with your crowdfunding journey. Find answers, get support, and connect with our team.</p>
+    <div class="hero-buttons d-flex justify-content-center gap-3 flex-wrap">
+      <a href="#help-center" class="btn btn-custom">Help Center</a>
+      <a href="#faq" class="btn btn-outline-custom">FAQ</a>
+    </div>
+  </div>
+</section>
+
+<!-- Help Center Section -->
+<section id="help-center" class="support-section">
+  <div class="container">
+    <h2><i class="fas fa-question-circle me-2"></i>Help Center</h2>
+    <div class="row g-4">
+      <div class="col-lg-3 col-md-6">
+        <div class="support-card p-4 h-100">
+          <h3>Getting Started</h3>
+          <p>Learn the basics of crowdfunding on Fund Door. From creating your first campaign to understanding our platform features.</p>
+          <ul>
+            <li>How to create a campaign</li>
+            <li>Setting funding goals</li>
+            <li>Campaign best practices</li>
+            <li>Payment processing</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="support-card p-4 h-100">
+          <h3>Managing Your Campaign</h3>
+          <p>Tools and tips for running successful crowdfunding campaigns.</p>
+          <ul>
+            <li>Updating backers</li>
+            <li>Handling rewards</li>
+            <li>Campaign analytics</li>
+            <li>Post-campaign fulfillment</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="support-card p-4 h-100">
+          <h3>For Backers</h3>
+          <p>Everything you need to know about supporting projects and managing your pledges.</p>
+          <ul>
+            <li>Finding projects</li>
+            <li>Making pledges</li>
+            <li>Payment methods</li>
+            <li>Reward delivery</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6" id="trust">
+        <div class="support-card support-card-highlight p-4 h-100">
+          <h3>Trust & Safety</h3>
+          <p>Learn about our security measures and how we protect your data and transactions.</p>
+          <ul>
+            <li>Platform security</li>
+            <li>Fraud prevention</li>
+            <li>Data privacy</li>
+            <li>Dispute resolution</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ Section -->
+<section id="faq" class="support-section">
+  <div class="container">
+    <h2><i class="fas fa-comments me-2"></i>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFAQ(this)">
+        How do I create a crowdfunding campaign?
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="faq-answer">
+        To create a campaign, sign up for a Fund Door account, click "Start Your Campaign" from your dashboard, and follow our step-by-step guide to set up your project details, funding goals, and rewards.
+      </div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFAQ(this)">
+        What are the fees for using Fund Door?
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="faq-answer">
+        Fund Door charges a 5% platform fee on successfully funded campaigns. Payment processing fees vary by payment method but are typically 2.9% + $0.30 per transaction.
+      </div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFAQ(this)">
+        How do I get paid if my campaign succeeds?
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="faq-answer">
+        Successful campaigns receive payments 14 days after the campaign ends. Funds are transferred to your linked bank account or PayPal after deducting platform and processing fees.
+      </div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFAQ(this)">
+        Can I edit my campaign after it's live?
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="faq-answer">
+        Yes, you can edit most aspects of your campaign while it's live, including the story, rewards, and images. However, you cannot change the funding goal or campaign duration once launched.
+      </div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFAQ(this)">
+        What happens if my campaign doesn't reach its goal?
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="faq-answer">
+        Fund Door operates on an all-or-nothing model. If your campaign doesn't reach its funding goal, no funds are collected, and backers are not charged.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Us Section -->
+<section id="contact" class="support-section">
+  <div class="container">
+    <h2><i class="fas fa-envelope me-2"></i>Contact Us</h2>
+    <div class="contact-container" style="display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;">
+
+      <!-- Contact People -->
+      <div style="background:white;padding:40px;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,0.1);">
+        <h3 style="color:#064734;font-weight:700;font-size:1.5rem;margin-bottom:30px;">Contact Us</h3>
+        <div class="row g-4">
+
+          <!-- Khushi -->
+          <div class="col-12">
+            <div style="background:#f8f9fa;border-radius:12px;padding:25px;border-left:4px solid #064734;">
+              <h4 style="color:#064734;font-weight:700;margin-bottom:15px;"><i class="fas fa-user-circle me-2"></i>Khushi Giri</h4>
+              <div class="info-item mb-3">
+                <div class="info-icon" style="width:40px;height:40px;font-size:1rem;background:linear-gradient(135deg,#064734,#0d6d4a);border-radius:10px;display:flex;align-items:center;justify-content:center;color:#E0FFC2;flex-shrink:0;">
+                  <i class="fas fa-phone"></i>
+                </div>
+                <div class="info-content" style="margin-left:15px;">
+                  <h4 style="color:#064734;font-weight:600;margin-bottom:5px;">Phone</h4>
+                  <p style="color:#666;margin:0;"><a href="tel:7666343849" style="color:#064734;text-decoration:none;font-weight:600;">7666343849</a></p>
+                </div>
+              </div>
+              <div class="info-item mb-0">
+                <div class="info-icon" style="width:40px;height:40px;font-size:1rem;background:linear-gradient(135deg,#064734,#0d6d4a);border-radius:10px;display:flex;align-items:center;justify-content:center;color:#E0FFC2;flex-shrink:0;">
+                  <i class="fas fa-envelope"></i>
+                </div>
+                <div class="info-content" style="margin-left:15px;">
+                  <h4 style="color:#064734;font-weight:600;margin-bottom:5px;">Email</h4>
+                  <p style="color:#666;margin:0;"><a href="mailto:askpm2610@gmail.com" style="color:#064734;text-decoration:none;font-weight:600;">askpm2610@gmail.com</a></p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Salman -->
+          <div class="col-12">
+            <div style="background:#f8f9fa;border-radius:12px;padding:25px;border-left:4px solid #064734;">
+              <h4 style="color:#064734;font-weight:700;margin-bottom:15px;"><i class="fas fa-user-circle me-2"></i>Salman Tai</h4>
+              <div class="info-item mb-0">
+                <div class="info-icon" style="width:40px;height:40px;font-size:1rem;background:linear-gradient(135deg,#064734,#0d6d4a);border-radius:10px;display:flex;align-items:center;justify-content:center;color:#E0FFC2;flex-shrink:0;">
+                  <i class="fas fa-phone"></i>
+                </div>
+                <div class="info-content" style="margin-left:15px;">
+                  <h4 style="color:#064734;font-weight:600;margin-bottom:5px;">Phone</h4>
+                  <p style="color:#666;margin:0;"><a href="tel:9004361862" style="color:#064734;text-decoration:none;font-weight:600;">9004361862</a></p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div style="background:white;padding:40px;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,0.1);">
+        <h3 style="color:#064734;font-weight:700;font-size:1.5rem;margin-bottom:30px;">Send us a Message</h3>
+        <form id="supportContactForm">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px;">
+            <div>
+              <label style="color:#064734;font-weight:600;margin-bottom:8px;display:block;">Full Name *</label>
+              <input type="text" id="sc-name" required style="width:100%;padding:12px 15px;border:2px solid #e0e0e0;border-radius:8px;font-family:'Inter',sans-serif;font-size:1rem;transition:all 0.3s ease;">
+            </div>
+            <div>
+              <label style="color:#064734;font-weight:600;margin-bottom:8px;display:block;">Email Address *</label>
+              <input type="email" id="sc-email" required style="width:100%;padding:12px 15px;border:2px solid #e0e0e0;border-radius:8px;font-family:'Inter',sans-serif;font-size:1rem;transition:all 0.3s ease;">
+            </div>
+          </div>
+          <div style="margin-bottom:20px;">
+            <label style="color:#064734;font-weight:600;margin-bottom:8px;display:block;">Subject *</label>
+            <input type="text" id="sc-subject" required style="width:100%;padding:12px 15px;border:2px solid #e0e0e0;border-radius:8px;font-family:'Inter',sans-serif;font-size:1rem;transition:all 0.3s ease;">
+          </div>
+          <div style="margin-bottom:20px;">
+            <label style="color:#064734;font-weight:600;margin-bottom:8px;display:block;">Category *</label>
+            <select id="sc-category" required style="width:100%;padding:12px 15px;border:2px solid #e0e0e0;border-radius:8px;font-family:'Inter',sans-serif;font-size:1rem;transition:all 0.3s ease;">
+              <option value="">Select a category...</option>
+              <option value="general">General Inquiry</option>
+              <option value="support">Support</option>
+              <option value="feedback">Feedback</option>
+              <option value="business">Business Partnership</option>
+              <option value="bug">Report a Bug</option>
+            </select>
+          </div>
+          <div style="margin-bottom:20px;">
+            <label style="color:#064734;font-weight:600;margin-bottom:8px;display:block;">Message *</label>
+            <textarea id="sc-message" required rows="5" style="width:100%;padding:12px 15px;border:2px solid #e0e0e0;border-radius:8px;font-family:'Inter',sans-serif;font-size:1rem;resize:vertical;min-height:120px;transition:all 0.3s ease;"></textarea>
+          </div>
+          <button type="submit" style="width:100%;padding:14px 30px;background:linear-gradient(45deg,#064734,#0d6d4a);color:white;border:none;border-radius:8px;font-weight:700;font-size:1rem;cursor:pointer;transition:all 0.3s ease;margin-top:15px;">Send Message</button>
+          <div id="scFormStatus" style="margin-top:15px;padding:15px;border-radius:8px;display:none;font-weight:600;"></div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 col-md-6 mb-4">
+        <h5>Fund Door</h5>
+        <p>Empowering innovation through community support. Join thousands of creators and backers building the future together.</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-6 mb-4">
+        <h5>Platform</h5>
+        <ul class="footer-links">
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#projects">Browse Projects</a></li>
+          <li><a href="./form/signup.html">Start a Campaign</a></li>
+          <li><a href="#success">Success Stories</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-md-6 mb-4">
+        <h5>Support</h5>
+        <ul class="footer-links">
+          <li><a href="#help-center">Help Center</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+          <li><a href="#trust">Trust & Safety</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4 col-md-6 mb-4">
+        <h5>Stay Updated</h5>
+        <p>Subscribe to our newsletter for the latest crowdfunding trends and success stories.</p>
+        <div class="input-group mb-3">
+          <input type="email" class="form-control" placeholder="Enter your email" aria-label="Email">
+          <button class="btn btn-custom" type="button">Subscribe</button>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Fund Door. All rights reserved. | <a href="privacypolicy.html">Privacy Policy</a> | <a href="terms-services.html">Terms of Service</a></p>
+    </div>
+  </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+// Support Contact Form
+document.getElementById('supportContactForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const name = document.getElementById('sc-name').value.trim();
+  const email = document.getElementById('sc-email').value.trim();
+  const subject = document.getElementById('sc-subject').value.trim();
+  const category = document.getElementById('sc-category').value;
+  const message = document.getElementById('sc-message').value.trim();
+  const statusEl = document.getElementById('scFormStatus');
+
+  if (!name || !email || !subject || !category || !message) {
+    return showSCStatus('Please fill in all required fields.', 'error');
+  }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    return showSCStatus('Please enter a valid email address.', 'error');
+  }
+
+  showSCStatus('Sending your message...', 'success');
+  try {
+    const res = await fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, email, subject, category, message })
+    });
+    const data = await res.json();
+    if (!res.ok) return showSCStatus(data.message || 'Failed to send message.', 'error');
+    showSCStatus(data.message, 'success');
+    this.reset();
+  } catch {
+    showSCStatus('Unable to connect to server. Please try again.', 'error');
+  }
+});
+
+function showSCStatus(msg, type) {
+  const el = document.getElementById('scFormStatus');
+  el.textContent = msg;
+  el.style.display = 'block';
+  el.style.background = type === 'success' ? '#d4edda' : '#f8d7da';
+  el.style.color = type === 'success' ? '#155724' : '#721c24';
+  el.style.border = type === 'success' ? '1px solid #c3e6cb' : '1px solid #f5c6cb';
+  if (type === 'success') setTimeout(() => { el.style.display = 'none'; }, 5000);
+}
+
+function toggleFAQ(element) {
+  const answer = element.nextElementSibling;
+  const icon = element.querySelector('i');
+
+  if (answer.style.display === 'block') {
+    answer.style.display = 'none';
+    icon.classList.remove('fa-chevron-up');
+    icon.classList.add('fa-chevron-down');
+  } else {
+    answer.style.display = 'block';
+    icon.classList.remove('fa-chevron-down');
+    icon.classList.add('fa-chevron-up');
+  }
+}
+</script>
+
+</body>
+</html>

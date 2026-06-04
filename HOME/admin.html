@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Panel - Fund Door</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+body { font-family: 'Inter', sans-serif; background: #f4f7f9; min-height: 100vh; }
+.navbar { background: #064734; height: 70px; display: flex; align-items: center; justify-content: space-between; padding: 0 40px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+.logo { font-size: 28px; font-weight: 700; color: #E0FFC2; text-decoration: none; }
+.nav-links { display: flex; gap: 24px; align-items: center; }
+.nav-links a { color: rgba(255,255,255,0.9); text-decoration: none; font-weight: 500; font-size: 15px; }
+.nav-links a:hover { color: #E0FFC2; }
+.page-header { padding: 60px 0 20px; text-align: center; }
+.page-header h1 { color: #064734; font-size: 2.8rem; }
+.page-header p { color: #556; max-width: 700px; margin: 0 auto; }
+.summary-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 20px; margin: 30px 0; }
+.summary-card, .user-card { background: white; border-radius: 18px; padding: 28px; box-shadow: 0 10px 30px rgba(0,0,0,0.07); }
+.summary-card h3, .user-card h3 { color: #064734; margin-bottom: 12px; }
+.summary-card p, .user-card p { color: #555; margin-bottom: 10px; }
+.user-card { margin-bottom: 24px; }
+.user-meta { display: flex; flex-wrap: wrap; gap: 12px; color: #777; font-size: 0.95rem; margin-bottom: 16px; }
+.user-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 10px; }
+.user-actions button { border: none; border-radius: 50px; padding: 10px 18px; font-weight: 600; }
+.btn-primary-custom { background: #064734; color: #fff; }
+.btn-secondary-custom { background: #E0FFC2; color: #064734; }
+.user-detail { margin-top: 16px; display: none; }
+.user-detail.open { display: block; }
+.detail-section { margin-top: 18px; }
+.detail-section h4 { margin-bottom: 10px; color: #064734; }
+.detail-list { list-style: none; padding: 0; margin: 0; }
+.detail-list li { background: #f8f9fb; border-radius: 12px; padding: 14px 16px; margin-bottom: 10px; }
+.logout-btn { background: #E0FFC2; color: #064734; border: none; padding: 10px 20px; border-radius: 50px; font-weight: 600; }
+@media (max-width: 992px) { .summary-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<nav class="navbar">
+  <a href="./index.html" class="logo">Fund Door</a>
+  <div class="nav-links">
+    <a href="./dashboard.html">Dashboard</a>
+    <a href="./campaigns.html">Campaigns</a>
+    <a href="./create-project.html">Create Campaign</a>
+    <button class="logout-btn" id="logoutButton">Logout</button>
+  </div>
+</nav>
+
+<section class="page-header">
+  <div class="container">
+    <h1>Admin Panel</h1>
+    <p>Review every user dashboard, campaign activity, and pledged support across the platform.</p>
+  </div>
+</section>
+
+<div class="container">
+  <div class="summary-grid" id="adminSummary">
+    <div class="summary-card"><h3>Total Users</h3><p id="userCount">0</p></div>
+    <div class="summary-card"><h3>Total Campaigns</h3><p id="campaignCount">0</p></div>
+    <div class="summary-card"><h3>Total Backed Campaigns</h3><p id="backedCount">0</p></div>
+  </div>
+
+  <div id="adminUserList"></div>
+</div>
+
+<footer class="footer" style="background-color: #064734; color: white; padding: 40px 0; margin-top: 40px;">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h5>Fund Door</h5>
+        <p>Empowering creators and communities with smarter crowdfunding tools.</p>
+      </div>
+      <div class="col-md-3">
+        <h5>Quick Links</h5>
+        <ul class="footer-links" style="list-style:none;padding:0;">
+          <li><a href="./index.html" style="color: rgba(255,255,255,0.8); text-decoration:none;">Home</a></li>
+          <li><a href="./campaigns.html" style="color: rgba(255,255,255,0.8); text-decoration:none;">Campaigns</a></li>
+          <li><a href="./create-project.html" style="color: rgba(255,255,255,0.8); text-decoration:none;">Create Campaign</a></li>
+          <li><a href="./support.html" style="color: rgba(255,255,255,0.8); text-decoration:none;">Support</a></li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <h5>Legal</h5>
+        <ul class="footer-links" style="list-style:none;padding:0;">
+          <li><a href="./terms-services.html" style="color: rgba(255,255,255,0.8); text-decoration:none;">Terms</a></li>
+          <li><a href="./privacypolicy.html" style="color: rgba(255,255,255,0.8); text-decoration:none;">Privacy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="text-center mt-4"><p>&copy; 2026 Fund Door. All rights reserved.</p></div>
+  </div>
+</footer>
+
+<script>
+function formatCurrency(value) {
+  return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(value);
+}
+
+function createDetailList(items, title) {
+  if (!items || !items.length) {
+    return `<p>No ${title.toLowerCase()} available.</p>`;
+  }
+  return `
+    <ul class="detail-list">
+      ${items.map(item => `
+        <li>
+          <strong>${item.title}</strong><br>
+          ${item.category ? `Category: ${item.category} | ` : ''}
+          Raised: ${formatCurrency(item.pledged || 0)} | Goal: ${formatCurrency(item.goal || 0)}
+        </li>
+      `).join('')}
+    </ul>
+  `;
+}
+
+function createUserCard(user) {
+  const card = document.createElement('div');
+  card.className = 'user-card';
+  card.innerHTML = `
+    <div class="d-flex justify-content-between align-items-start flex-wrap gap-3">
+      <div>
+        <h3>${user.name} ${user.isAdmin ? '<span style="color:#39974a; font-size:0.9rem;">(Admin)</span>' : ''}</h3>
+        <div class="user-meta">
+          <span>Email: ${user.email}</span>
+          <span>Created: ${new Date(user.createdAt).toLocaleDateString()}</span>
+          <span>Campaigns: ${user.campaignCount}</span>
+          <span>Backed: ${user.backedCount}</span>
+          <span>Total Raised: ${formatCurrency(user.totalRaised)}</span>
+        </div>
+      </div>
+      <div class="user-actions">
+        <button class="btn-primary-custom" type="button">View Dashboard</button>
+        <button class="btn-secondary-custom toggle-admin-btn" type="button">${user.isAdmin ? 'Revoke Admin' : 'Make Admin'}</button>
+        <button class="btn-secondary-custom delete-user-btn" type="button" style="background:#f26e6e;color:#fff;">Delete User</button>
+      </div>
+    </div>
+    <div class="user-detail">
+      <div class="detail-section">
+        <h4>Created Campaigns</h4>
+        ${createDetailList(user.myCampaigns, 'Created Campaigns')}
+      </div>
+      <div class="detail-section">
+        <h4>Backed Campaigns</h4>
+        ${createDetailList(user.backedCampaigns, 'Backed Campaigns')}
+      </div>
+    </div>
+  `;
+
+  const button = card.querySelector('.btn-primary-custom');
+  const toggleAdminButton = card.querySelector('.toggle-admin-btn');
+  const deleteUserButton = card.querySelector('.delete-user-btn');
+  const detail = card.querySelector('.user-detail');
+
+  button.addEventListener('click', () => {
+    const isOpen = detail.classList.toggle('open');
+    button.textContent = isOpen ? 'Hide Dashboard' : 'View Dashboard';
+  });
+
+  toggleAdminButton.addEventListener('click', async () => {
+    const confirmAction = confirm(`Are you sure you want to ${user.isAdmin ? 'revoke admin rights from' : 'grant admin rights to'} ${user.name}?`);
+    if (!confirmAction) return;
+    const token = localStorage.getItem('fundDoorToken');
+    const response = await fetch(`/api/admin/users/${user.id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify({ isAdmin: !user.isAdmin })
+    });
+    const data = await response.json();
+    if (!response.ok) {
+      alert(data.message || 'Unable to update user role.');
+      return;
+    }
+    alert(data.message);
+    loadAdminPanel();
+  });
+
+  deleteUserButton.addEventListener('click', async () => {
+    const confirmAction = confirm(`Delete ${user.name} and their campaigns? This cannot be undone.`);
+    if (!confirmAction) return;
+    const token = localStorage.getItem('fundDoorToken');
+    const response = await fetch(`/api/admin/users/${user.id}`, {
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    });
+    const data = await response.json();
+    if (!response.ok) {
+      alert(data.message || 'Unable to delete user.');
+      return;
+    }
+    alert(data.message);
+    loadAdminPanel();
+  });
+
+  return card;
+}
+
+async function loadAdminPanel() {
+  const token = localStorage.getItem('fundDoorToken');
+  if (!token) {
+    window.location.href = './form/login.html';
+    return;
+  }
+
+  const meResp = await fetch('/api/me', { headers: { 'Authorization': `Bearer ${token}` }});
+  if (!meResp.ok) {
+    localStorage.removeItem('fundDoorToken');
+    window.location.href = './form/login.html';
+    return;
+  }
+
+  const me = await meResp.json();
+  if (!me.isAdmin) {
+    window.location.href = './dashboard.html';
+    return;
+  }
+
+  const response = await fetch('/api/admin/users', { headers: { 'Authorization': `Bearer ${token}` }});
+  if (!response.ok) {
+    const error = await response.json();
+    alert(error.message || 'Unable to load admin data.');
+    return;
+  }
+
+  const data = await response.json();
+  const users = data.users || [];
+  document.getElementById('userCount').textContent = users.length;
+  document.getElementById('campaignCount').textContent = users.reduce((sum, user) => sum + user.campaignCount, 0);
+  document.getElementById('backedCount').textContent = users.reduce((sum, user) => sum + user.backedCount, 0);
+
+  const adminUserList = document.getElementById('adminUserList');
+  adminUserList.innerHTML = users.length ? '' : '<div>No users found.</div>';
+  users.forEach((user) => adminUserList.appendChild(createUserCard(user)));
+}
+
+document.getElementById('logoutButton').addEventListener('click', async () => {
+  const token = localStorage.getItem('fundDoorToken');
+  if (token) {
+    await fetch('/api/logout', { method: 'POST', headers: { 'Authorization': `Bearer ${token}` }});
+  }
+  localStorage.removeItem('fundDoorToken');
+  window.location.href = './form/login.html';
+});
+
+loadAdminPanel();
+</script>
+</body>
+</html>

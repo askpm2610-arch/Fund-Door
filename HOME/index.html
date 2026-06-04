@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fund Door - Home | Empowering Dreams Through Crowdfunding</title>
+
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+body {
+  font-family: 'Inter', sans-serif;
+  background: #f8f9fa;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Navigation Bar */
+.navbar {
+  background: #064734;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: 700;
+  color: #E0FFC2;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.logo:hover {
+  color: #ffffff;
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.nav-links a {
+  color: rgba(255,255,255,0.9);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.nav-links a:hover {
+  color: #E0FFC2;
+}
+
+.btn-custom {
+  background: linear-gradient(45deg, #064734, #E0FFC2);
+  color: white;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 50px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(6, 71, 52, 0.3);
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-custom:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(6, 71, 52, 0.4);
+  color: white;
+}
+
+.btn-outline-custom {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  padding: 10px 25px;
+  border-radius: 50px;
+  font-weight: 600;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-outline-custom:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+  color: white;
+}
+
+/* Hero Section */
+.hero-banner {
+  background: linear-gradient(135deg, rgba(6, 71, 52, 0.7) 0%, rgba(224, 255, 194, 0.5) 100%), 
+              url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  padding-top: 70px;
+  margin-bottom: 60px;
+}
+
+.hero-content h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  background: linear-gradient(45deg, #E0FFC2, #ffffff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.hero-content p {
+  font-size: 1.3rem;
+  margin-bottom: 40px;
+  opacity: 0.95;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* Section Styling */
+.section {
+  padding: 80px 0;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #064734;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.section-subtitle {
+  font-size: 1.1rem;
+  color: #666;
+  text-align: center;
+  margin-bottom: 50px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Featured Campaigns Section */
+.featured-campaigns {
+  background: white;
+}
+
+.campaign-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.campaign-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.campaign-card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.campaign-info {
+  padding: 25px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.campaign-category {
+  display: inline-block;
+  background: #E0FFC2;
+  color: #064734;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  width: fit-content;
+}
+
+.campaign-card h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #064734;
+  margin-bottom: 10px;
+}
+
+.campaign-card p {
+  color: #666;
+  margin-bottom: 15px;
+  flex-grow: 1;
+}
+
+.campaign-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+  border-top: 1px solid #eee;
+  padding-top: 15px;
+}
+
+.campaign-progress {
+  flex-grow: 1;
+  margin-right: 15px;
+}
+
+.progress-bar {
+  height: 8px;
+  background: #e9ecef;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #064734, #E0FFC2);
+}
+
+.campaign-raised {
+  font-weight: 700;
+  color: #064734;
+  font-size: 0.95rem;
+}
+
+/* How it Works Section */
+.how-it-works {
+  background: linear-gradient(135deg, #f0f9ff 0%, #f0ffe5 100%);
+}
+
+.step-card {
+  text-align: center;
+  padding: 35px;
+  position: relative;
+}
+
+.step-icon {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(45deg, #064734, #E0FFC2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 2rem;
+  margin: 0 auto 20px;
+  box-shadow: 0 4px 15px rgba(6, 71, 52, 0.2);
+}
+
+.step-card h4 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #064734;
+  margin-bottom: 15px;
+}
+
+.step-card p {
+  color: #666;
+  line-height: 1.6;
+}
+
+/* Statistics Section */
+.statistics {
+  background: linear-gradient(135deg, #064734 0%, #0a5f47 100%);
+  color: white;
+}
+
+.stat-item {
+  text-align: center;
+  padding: 30px;
+}
+
+.stat-number {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #E0FFC2;
+  margin-bottom: 10px;
+}
+
+.stat-label {
+  font-size: 1.1rem;
+  opacity: 0.95;
+}
+
+/* Categories Section */
+.categories {
+  background: white;
+}
+
+.category-box {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e8f5e9 100%);
+  padding: 40px 25px;
+  border-radius: 12px;
+  text-align: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.category-box:hover {
+  transform: translateY(-5px);
+  background: linear-gradient(135deg, #E0FFC2 0%, #c5ff89 100%);
+  box-shadow: 0 8px 20px rgba(6, 71, 52, 0.15);
+}
+
+.category-icon {
+  font-size: 3rem;
+  color: #064734;
+  margin-bottom: 15px;
+}
+
+.category-box h4 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #064734;
+}
+
+/* Success Stories Section */
+.success-stories {
+  background: linear-gradient(135deg, #f0f9ff 0%, #f0ffe5 100%);
+}
+
+.testimonial-card {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  margin-bottom: 30px;
+  border-left: 5px solid #E0FFC2;
+}
+
+.testimonial-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.testimonial-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 15px;
+}
+
+.testimonial-author {
+  font-weight: 700;
+  color: #064734;
+  margin-bottom: 5px;
+}
+
+.testimonial-role {
+  font-size: 0.9rem;
+  color: #999;
+}
+
+.testimonial-text {
+  color: #666;
+  line-height: 1.7;
+  font-style: italic;
+}
+
+/* CTA Section */
+.cta-section {
+  background: linear-gradient(135deg, #064734 0%, #0a5f47 100%);
+  color: white;
+  padding: 80px 0;
+  text-align: center;
+}
+
+.cta-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.cta-subtitle {
+  font-size: 1.1rem;
+  margin-bottom: 40px;
+  opacity: 0.95;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Footer */
+.footer {
+  background-color: #064734;
+  color: white;
+  padding: 60px 0 30px;
+}
+
+.footer h5 {
+  color: #E0FFC2;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.footer p {
+  line-height: 1.6;
+  margin-bottom: 15px;
+  opacity: 0.9;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li {
+  margin-bottom: 8px;
+}
+
+.footer-links a {
+  color: rgba(255,255,255,0.8);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #E0FFC2;
+}
+
+.social-links {
+  display: flex;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.social-links a {
+  color: white;
+  font-size: 20px;
+  transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+  color: #E0FFC2;
+  transform: translateY(-2px);
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.1);
+  margin-top: 40px;
+  padding-top: 20px;
+  text-align: center;
+  opacity: 0.8;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero-banner {
+    min-height: 400px;
+    padding-top: 70px;
+  }
+
+  .hero-content h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .cta-title {
+    font-size: 2rem;
+  }
+
+  .stat-number {
+    font-size: 2.2rem;
+  }
+
+  .navbar {
+    padding: 0 20px;
+    height: 60px;
+  }
+
+  .nav-links {
+    gap: 20px;
+    font-size: 14px;
+  }
+
+  .logo {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-banner {
+    min-height: 350px;
+  }
+
+  .hero-content h1 {
+    font-size: 1.8rem;
+  }
+
+  .hero-content p {
+    font-size: 0.95rem;
+  }
+
+  .section-title {
+    font-size: 1.6rem;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+  }
+
+  .btn-custom, .btn-outline-custom {
+    width: 100%;
+  }
+
+  .navbar {
+    padding: 0 15px;
+  }
+
+  .nav-links {
+    gap: 15px;
+    font-size: 12px;
+  }
+
+  .logo {
+    font-size: 20px;
+  }
+}
+
+/* ===== ANIMATIONS ===== */
+
+/* Hero Section Animations */
+.hero-content h1 {
+  animation: fadeInDown 1s ease-out;
+}
+
+.hero-content p {
+  animation: fadeInUp 1s ease-out 0.2s both;
+}
+
+.hero-buttons {
+  animation: fadeIn 1s ease-out 0.4s both;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Button Animations */
+.btn-custom, .btn-outline-custom {
+  animation: buttonSlide 0.6s ease-out;
+}
+
+@keyframes buttonSlide {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.btn-custom:hover {
+  animation: buttonPulse 0.6s ease-in-out infinite;
+}
+
+@keyframes buttonPulse {
+  0%, 100% {
+    box-shadow: 0 6px 20px rgba(6, 71, 52, 0.4);
+  }
+  50% {
+    box-shadow: 0 6px 30px rgba(6, 71, 52, 0.6);
+  }
+}
+
+/* Campaign Card Animations */
+.campaign-card {
+  animation: slideInUp 0.6s ease-out;
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.campaign-card:hover {
+  animation: none;
+}
+
+.campaign-card img {
+  transition: transform 0.4s ease;
+}
+
+.campaign-card:hover img {
+  transform: scale(1.05);
+}
+
+/* Section Title Animations */
+.section-title {
+  animation: glowTitle 2s ease-in-out infinite;
+}
+
+@keyframes glowTitle {
+  0%, 100% {
+    text-shadow: 0 0 10px rgba(6, 71, 52, 0.1);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(6, 71, 52, 0.3);
+  }
+}
+
+/* Step Card Animations */
+.step-card {
+  animation: slideInUp 0.7s ease-out;
+  transition: all 0.3s ease;
+}
+
+.step-icon {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.step-card:hover {
+  animation: none;
+  transform: translateY(-5px);
+}
+
+/* Statistics Animations */
+.stat-number {
+  animation: countUp 2s ease-out;
+}
+
+@keyframes countUp {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Category Box Animations */
+.category-box {
+  animation: slideInUp 0.8s ease-out;
+  transition: all 0.3s ease;
+}
+
+.category-icon {
+  animation: spin 3s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.category-box:hover .category-icon {
+  animation: spin 1.5s linear infinite;
+}
+
+/* CTA Section Animation */
+.cta-section {
+  animation: slideInUp 0.9s ease-out;
+}
+
+.cta-title {
+  animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Testimonial Card Animations */
+.testimonial-card {
+  animation: slideInUp 0.7s ease-out;
+  transition: all 0.3s ease;
+}
+
+.testimonial-card:hover {
+  animation: none;
+  transform: translateX(10px);
+}
+
+.testimonial-avatar {
+  animation: wiggle 0.5s ease-in-out;
+}
+
+@keyframes wiggle {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-2deg);
+  }
+  75% {
+    transform: rotate(2deg);
+  }
+}
+
+/* Nav Links Animation */
+.nav-links a {
+  position: relative;
+  animation: slideInDown 0.5s ease-out;
+}
+
+.nav-links a::before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background: #E0FFC2;
+  animation: expandWidth 0.3s ease-out forwards;
+}
+
+@keyframes expandWidth {
+  from {
+    width: 0;
+  }
+  to {
+    width: 0;
+  }
+}
+
+.nav-links a:hover::before {
+  animation: expandWidth 0.3s ease-out forwards;
+}
+
+/* Progress Bar Animation */
+.progress-fill {
+  animation: progressBar 1.5s ease-out;
+}
+
+@keyframes progressBar {
+  from {
+    width: 0 !important;
+  }
+  to {
+    width: inherit;
+  }
+}
+
+/* Footer Links Hover Animation */
+.footer-links a, .footer a {
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.footer-links a:hover, .footer a:hover {
+  padding-left: 10px;
+}
+
+/* Smooth Scroll Animation */
+html {
+  scroll-behavior: smooth;
+}
+
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="navbar">
+  <a href="./index.html" class="logo">Fund Door</a>
+  <div class="nav-links">
+    <a href="./index.html">Home</a>
+    <a href="./about.html">About</a>
+    <a href="./contact.html">Contact</a>
+    <a href="./support.html">Support</a>
+    <a href="./form/signup.html">Sign Up</a>
+  </div>
+</nav>
+
+<!-- Hero Banner -->
+<section class="hero-banner" id="home">
+  <div class="container">
+    <div class="hero-content">
+      <h1>Turn Your Ideas Into Reality</h1>
+      <p>Fund Door connects innovative creators with passionate supporters. Launch your campaign and bring your vision to life with our thriving community.</p>
+      <div class="hero-buttons">
+        <a href="form/signup.html" class="btn btn-custom">Start Your Campaign</a>
+        <a href="./campaigns.html" class="btn btn-outline-custom">Explore Projects</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+function updateHomeLinks() {
+  const token = localStorage.getItem('fundDoorToken');
+  if (!token) return;
+
+  const startButton = document.querySelector('.hero-buttons .btn-custom');
+  const signupNav = document.querySelector('.nav-links a[href="./form/signup.html"]');
+  if (startButton) {
+    startButton.href = './dashboard.html';
+    startButton.textContent = 'Go to Dashboard';
+  }
+  if (signupNav) {
+    signupNav.href = './dashboard.html';
+    signupNav.textContent = 'Dashboard';
+  }
+}
+updateHomeLinks();
+</script>
+
+<!-- Featured Campaigns -->
+<section class="section featured-campaigns" id="featured">
+  <div class="container">
+    <h2 class="section-title">Featured Campaigns</h2>
+    <div class="row g-4">
+      <div class="col-lg-4 col-md-6">
+        <div class="campaign-card">
+          <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60" alt="Medical Technology">
+          <div class="campaign-info">
+            <span class="campaign-category">Healthcare</span>
+            <h3>Advanced Medical Device</h3>
+            <p>Revolutionary wearable technology that helps patients monitor their health in real-time.</p>
+            <div class="campaign-footer">
+              <div class="campaign-progress">
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 75%"></div>
+                </div>
+              </div>
+              <span class="campaign-raised">$75K/$100K</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="campaign-card">
+          <img src="https://picsum.photos/500/250?random=2" alt="Education App">
+          <div class="campaign-info">
+            <span class="campaign-category">Education</span>
+            <h3>Interactive Learning Platform</h3>
+            <p>An innovative app that makes learning engaging for children with gamification and AI-powered lessons.</p>
+            <div class="campaign-footer">
+              <div class="campaign-progress">
+                <div class="progress-fill" style="width: 85%"></div>
+              </div>
+              <span class="campaign-raised">$85K/$100K</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="campaign-card">
+          <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60" alt="Environment">
+          <div class="campaign-info">
+            <span class="campaign-category">Environment</span>
+            <h3>Eco-Friendly Packaging</h3>
+            <p>Sustainable packaging solution that reduces plastic waste by 90% for small businesses.</p>
+            <div class="campaign-footer">
+              <div class="campaign-progress">
+                <div class="progress-fill" style="width: 60%"></div>
+              </div>
+              <span class="campaign-raised">$60K/$100K</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- How It Works -->
+<section class="section how-it-works">
+  <div class="container">
+    <h2 class="section-title">How Fund Door Works</h2>
+    <div class="row">
+      <div class="col-lg-3 col-md-6">
+        <div class="step-card">
+          <div class="step-icon">
+            <i class="fas fa-lightbulb"></i>
+          </div>
+          <h4>Create Your Campaign</h4>
+          <p>Share your innovative idea with our community. Set your funding goal and timeline.</p>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6">
+        <div class="step-card">
+          <div class="step-icon">
+            <i class="fas fa-users"></i>
+          </div>
+          <h4>Attract Supporters</h4>
+          <p>Engage with backers who believe in your vision and want to be part of your journey.</p>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6">
+        <div class="step-card">
+          <div class="step-icon">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <h4>Reach Your Goal</h4>
+          <p>Build momentum as supporters fund your project. Track progress in real-time.</p>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6">
+        <div class="step-card">
+          <div class="step-icon">
+            <i class="fas fa-rocket"></i>
+          </div>
+          <h4>Make It Happen</h4>
+          <p>Execute your vision and deliver rewards to your community of backers.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Statistics -->
+<section class="section statistics">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3 col-md-6">
+        <div class="stat-item">
+          <div class="stat-number">50K+</div>
+          <div class="stat-label">Active Projects</div>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6">
+        <div class="stat-item">
+          <div class="stat-number">2.5M+</div>
+          <div class="stat-label">Backers Worldwide</div>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6">
+        <div class="stat-item">
+          <div class="stat-number">$850M+</div>
+          <div class="stat-label">Funded</div>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6">
+        <div class="stat-item">
+          <div class="stat-number">95%</div>
+          <div class="stat-label">Success Rate</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Categories -->
+<section class="section categories">
+  <div class="container">
+    <h2 class="section-title">Browse By Category</h2>
+    <div class="row g-4">
+      <div class="col-lg-3 col-md-6">
+        <div class="category-box">
+          <div class="category-icon"><i class="fas fa-heartbeat"></i></div>
+          <h4>Healthcare</h4>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6">
+        <div class="category-box">
+          <div class="category-icon"><i class="fas fa-graduation-cap"></i></div>
+          <h4>Education</h4>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6">
+        <div class="category-box">
+          <div class="category-icon"><i class="fas fa-leaf"></i></div>
+          <h4>Environment</h4>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6">
+        <div class="category-box">
+          <div class="category-icon"><i class="fas fa-robot"></i></div>
+          <h4>Technology</h4>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6">
+        <div class="category-box">
+          <div class="category-icon"><i class="fas fa-music"></i></div>
+          <h4>Arts & Culture</h4>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6">
+        <div class="category-box">
+          <div class="category-icon"><i class="fas fa-gamepad"></i></div>
+          <h4>Gaming</h4>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6">
+        <div class="category-box">
+          <div class="category-icon"><i class="fas fa-utensils"></i></div>
+          <h4>Food & Beverage</h4>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6">
+        <div class="category-box">
+          <div class="category-icon"><i class="fas fa-building"></i></div>
+          <h4>Social Impact</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Call to Action -->
+<section class="cta-section">
+  <div class="container">
+    <h2 class="cta-title">Ready to Change the World?</h2>
+    <p class="cta-subtitle">Start your crowdfunding campaign today and join thousands of creators making an impact.</p>
+    <a href="form/signup.html" class="btn btn-custom" style="padding: 14px 40px; font-size: 1.1rem;">Launch Your Campaign</a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 col-md-6 mb-4">
+        <h5>Fund Door</h5>
+        <p>Empowering innovation through community support. Join thousands of creators and backers building the future together.</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-6 mb-4">
+        <h5>Platform</h5>
+        <ul class="footer-links">
+          <li><a href="./about.html">About Us</a></li>
+          <li><a href="#featured">Browse Projects</a></li>
+          <li><a href="./form/signup.html">Start a Campaign</a></li>
+          <li><a href="#success-stories">Success Stories</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-md-6 mb-4">
+        <h5>Support</h5>
+        <ul class="footer-links">
+          <li><a href="./support.html">Help Center</a></li>
+          <li><a href="./support.html">FAQ</a></li>
+          <li><a href="./support.html">Contact Us</a></li>
+          <li><a href="./support.html">Trust & Safety</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4 col-md-6 mb-4">
+        <h5>Stay Updated</h5>
+        <p>Subscribe to our newsletter for the latest crowdfunding trends and success stories.</p>
+        <div class="input-group mb-3">
+          <input type="email" class="form-control" placeholder="Enter your email" aria-label="Email">
+          <button class="btn btn-custom" type="button">Subscribe</button>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Fund Door. All rights reserved. | <a href="./privacypolicy.html" style="color: #E0FFC2;">Privacy Policy</a> | <a href="./terms-services.html" style="color: #E0FFC2;">Terms of Service</a></p>
+    </div>
+  </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

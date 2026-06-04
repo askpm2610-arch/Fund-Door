@@ -1,0 +1,24 @@
+[
+  {
+    "id": "3e7319eb-1527-4b2c-9067-d570224461d0",
+    "name": "Admin",
+    "email": "askpm2610@gmail.com",
+    "password": "0d3ce3a5e950ec82244f931ddab2232f:2096663c5c0af19f5921cbd2708fd0b1de29bef6ebaf3165cbd0b1003fe52cbfb484f4352a396ffa484358e9d9ba5251abbd6526b4b2f0aee408b4a8555065b7",
+    "createdAt": "2026-06-01T14:48:55.168Z",
+    "isAdmin": true
+  },
+  {
+    "id": "713a6678-d77c-4c47-b979-2dbba1e5cb4f",
+    "name": "SURVI",
+    "email": "survi30@gmail.com",
+    "password": "4244f4ca01f00a02cb84fe64b8b2b741:c6b41a19fbf5d4c82af37457bd00803c4597ad4fe10e8adcdaabad4fbde04ac7c570636dc898efcaf8ab336044830ff85cfdcd403a6a30607f68c2c9ef5d3d78",
+    "createdAt": "2026-06-01T15:41:31.804Z"
+  },
+  {
+    "id": "24c2ab3f-b77a-48df-89e0-947b0247dd37",
+    "name": "survi giri",
+    "email": "ayuhuyawr@gmail.com",
+    "password": "eed4f4dbe0e150a4e0be745be8db3bbc:4777cfd656d3480090c19276239348860b133e9991c9a274be389f2de6975399aa685194fbde43831fbc1cc2e381167f1a9faf850c83dbd8dd8906e42eb57b59",
+    "createdAt": "2026-06-02T04:32:40.050Z"
+  }
+]

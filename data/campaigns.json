@@ -1,0 +1,130 @@
+[
+  {
+    "id": "d4eb5f6a-2f8b-4d81-8b29-5e334f4b0c79",
+    "title": "Green Energy Hub",
+    "description": "A community-powered clean energy workspace to develop sustainable technology and education programs.",
+    "category": "Technology",
+    "goal": 5000,
+    "imageUrl": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80",
+    "ownerId": "3e7319eb-1527-4b2c-9067-d570224461d0",
+    "ownerName": "KhushiM Giri",
+    "createdAt": "2026-05-20T08:48:00.000Z",
+    "pledged": 11200,
+    "backers": 3,
+    "pledges": [
+      {
+        "userId": "713a6678-d77c-4c47-b979-2dbba1e5cb4f",
+        "name": "SURVI",
+        "amount": 500,
+        "createdAt": "2026-05-22T12:10:00.000Z"
+      },
+      {
+        "userId": "713a6678-d77c-4c47-b979-2dbba1e5cb4f",
+        "name": "SURVI",
+        "amount": 700,
+        "createdAt": "2026-05-23T09:05:00.000Z"
+      },
+      {
+        "userId": "3e7319eb-1527-4b2c-9067-d570224461d0",
+        "name": "Admin",
+        "amount": 10000,
+        "createdAt": "2026-06-04T05:41:04.830Z"
+      }
+    ]
+  },
+  {
+    "id": "f79f1aa2-9a28-48ea-9f7d-3b8b0a011e6c",
+    "title": "Art for the Village",
+    "description": "Support local artists creating murals and workshops to bring the neighborhood together.",
+    "category": "Creative",
+    "goal": 2500,
+    "imageUrl": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80",
+    "ownerId": "713a6678-d77c-4c47-b979-2dbba1e5cb4f",
+    "ownerName": "SURVI",
+    "createdAt": "2026-05-25T11:30:00.000Z",
+    "pledged": 1800,
+    "backers": 15,
+    "pledges": [
+      {
+        "userId": "3e7319eb-1527-4b2c-9067-d570224461d0",
+        "name": "KhushiM Giri",
+        "amount": 1000,
+        "createdAt": "2026-05-26T10:20:00.000Z"
+      },
+      {
+        "userId": "713a6678-d77c-4c47-b979-2dbba1e5cb4f",
+        "name": "SURVI",
+        "amount": 800,
+        "createdAt": "2026-05-26T13:45:00.000Z"
+      }
+    ]
+  },
+  {
+    "id": "a8d65005-f8dd-4b12-9d51-cef2ad6bd6c1",
+    "title": "Local Startup Support",
+    "description": "Help small business founders launch their first product with mentoring, manufacturing, and marketing support.",
+    "category": "Business",
+    "goal": 10000,
+    "imageUrl": "https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1200&q=80",
+    "ownerId": "3e7319eb-1527-4b2c-9067-d570224461d0",
+    "ownerName": "KhushiM Giri",
+    "createdAt": "2026-05-27T09:20:00.000Z",
+    "pledged": 4300,
+    "backers": 22,
+    "pledges": [
+      {
+        "userId": "713a6678-d77c-4c47-b979-2dbba1e5cb4f",
+        "name": "SURVI",
+        "amount": 1300,
+        "createdAt": "2026-05-28T08:55:00.000Z"
+      },
+      {
+        "userId": "3e7319eb-1527-4b2c-9067-d570224461d0",
+        "name": "KhushiM Giri",
+        "amount": 3000,
+        "createdAt": "2026-05-28T11:10:00.000Z"
+      }
+    ]
+  },
+  {
+    "id": "c7a95079-ca14-4321-a0e0-6e337ad9e346",
+    "title": "Community Garden Revival",
+    "description": "Create a safe, green gathering place where residents can grow food, share skills, and build connections.",
+    "category": "Social",
+    "goal": 3000,
+    "imageUrl": "https://images.unsplash.com/photo-1514432324607-a09d9b4aef85?auto=format&fit=crop&w=1200&q=80",
+    "ownerId": "713a6678-d77c-4c47-b979-2dbba1e5cb4f",
+    "ownerName": "SURVI",
+    "createdAt": "2026-05-30T14:45:00.000Z",
+    "pledged": 2050,
+    "backers": 10,
+    "pledges": [
+      {
+        "userId": "3e7319eb-1527-4b2c-9067-d570224461d0",
+        "name": "KhushiM Giri",
+        "amount": 950,
+        "createdAt": "2026-05-31T12:30:00.000Z"
+      },
+      {
+        "userId": "713a6678-d77c-4c47-b979-2dbba1e5cb4f",
+        "name": "SURVI",
+        "amount": 1100,
+        "createdAt": "2026-05-31T13:50:00.000Z"
+      }
+    ]
+  },
+  {
+    "id": "79db70e5-4a37-4321-a377-115394b6fb0a",
+    "title": "green energy",
+    "description": "clean , sustainable , or renewable energy",
+    "category": "Social",
+    "goal": 5000000,
+    "imageUrl": "https://www.google.com/imgres?q=green%20energy&imgurl=https%3A%2F%2Fwww.jakson.com%2Fwp-content%2Fuploads%2F2025%2F06%2FHow-Green-Energy-is-Powering-Indias-Economic-Growth.jpg&imgrefurl=https%3A%2F%2Fwww.jakson.com%2Fblogs%2Fhow-green-energy-is-powering-indias-economic-growth%2F&docid=dhOueRYAJ3ToHM&tbnid=q38Dn4gi01HykM&vet=12ahUKEwjvisnT8OyUAxUqr1YBHaDRIcgQnPAOegQIGhAB..i&w=1536&h=890&hcb=2&ved=2ahUKEwjvisnT8OyUAxUqr1YBHaDRIcgQnPAOegQIGhAB",
+    "ownerId": "3e7319eb-1527-4b2c-9067-d570224461d0",
+    "ownerName": "Admin",
+    "createdAt": "2026-06-04T05:45:00.202Z",
+    "pledged": 0,
+    "backers": 0,
+    "pledges": []
+  }
+]

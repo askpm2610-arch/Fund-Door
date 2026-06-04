@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fund Door - Login</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #064734 0%, #E0FFC2 100%);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* NAVBAR */
+.navbar {
+  background: #064734;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  position: relative;
+  z-index: 10;
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: 700;
+  color: #E0FFC2;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.logo:hover {
+  color: #ffffff;
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.nav-links a {
+  color: rgba(255,255,255,0.9);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.nav-links a:hover {
+  color: #E0FFC2;
+  transform: translateY(-1px);
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 50%;
+  background: #E0FFC2;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* MAIN */
+.main-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* CARD */
+.login-card {
+  background-color: transparent;
+  backdrop-filter: blur(25px);
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.3);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+  padding: 40px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.login-header {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.login-header h1 {
+  font-size: 26px;
+}
+
+/* FORM */
+.form-group {
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 15px 45px 15px 15px; /* space for icon */
+  border: 2px solid #171717;
+  border-radius: 12px;
+  background-color: transparent;
+  font-size: 15px;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #064734;
+}
+input::placeholder {
+  color: #000000;
+}
+/* ICONS */
+.icon {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #000000;
+}
+
+.toggle-password {
+  cursor: pointer;
+}
+
+/* BUTTON */
+.login-btn {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(45deg, #064734, #E0FFC2);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* OPTIONS */
+.options {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.forgot-password {
+  color: #064734;
+  text-decoration: none;
+}
+
+.signup-link {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.signup-link a {
+  color: #064734;
+  text-decoration: none;
+}
+
+/* ===== ANIMATIONS ===== */
+
+.navbar {
+  animation: slideDown 0.5s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.login-card {
+  animation: slideInUp 0.6s ease-out;
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.login-header {
+  animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.form-group {
+  animation: slideInLeft 0.5s ease-out forwards;
+}
+
+.form-group:nth-child(1) { animation-delay: 0.2s; }
+.form-group:nth-child(2) { animation-delay: 0.4s; }
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.form-group input:focus {
+  animation: inputGlow 0.3s ease-out;
+}
+
+@keyframes inputGlow {
+  from {
+    box-shadow: 0 0 0 rgba(6, 71, 52, 0);
+  }
+  to {
+    box-shadow: 0 0 10px rgba(6, 71, 52, 0.2);
+  }
+}
+
+.login-btn {
+  animation: slideInUp 0.6s ease-out 0.6s both;
+  transition: all 0.3s ease;
+}
+
+.login-btn:hover {
+  animation: buttonGlow 0.6s ease-in-out infinite;
+}
+
+@keyframes buttonGlow {
+  0%, 100% {
+    box-shadow: 0 4px 15px rgba(6, 71, 52, 0.3);
+  }
+  50% {
+    box-shadow: 0 4px 25px rgba(6, 71, 52, 0.5);
+  }
+}
+
+.signup-link {
+  animation: fadeIn 0.8s ease-out 0.8s both;
+}
+
+.signup-link a {
+  transition: all 0.3s ease;
+}
+
+.signup-link a:hover {
+  color: #E0FFC2;
+  text-decoration: underline;
+  padding-right: 5px;
+}
+
+.nav-links a {
+  animation: slideDown 0.5s ease-out forwards;
+}
+
+.nav-links a:nth-child(1) { animation-delay: 0.1s; }
+.nav-links a:nth-child(2) { animation-delay: 0.15s; }
+.nav-links a:nth-child(3) { animation-delay: 0.2s; }
+.nav-links a:nth-child(4) { animation-delay: 0.25s; }
+.nav-links a:nth-child(5) { animation-delay: 0.3s; }
+
+html {
+  scroll-behavior: smooth;
+}
+
+</style>
+</head>
+
+<body>
+
+<nav class="navbar">
+  <a href="../index.html" class="logo">Fund Door</a>
+  <div class="nav-links">
+    <a href="../index.html">Home</a>
+    <a href="../about.html">About</a>
+    <a href="../contact.html">Contact</a>
+    <a href="../support.html">Support</a>
+    <a href="signup.html">Sign Up</a>
+  </div>
+</nav>
+
+<div class="main-content">
+  <div class="login-card">
+
+    <div class="login-header">
+      <h1>Welcome Back</h1>
+      <p>Login to continue</p>
+    </div>
+
+    <form id="loginForm" action="/api/login" method="post">
+
+      <!-- EMAIL -->
+      <div class="form-group">
+        <input type="email" id="email" name="email" placeholder="Email address" required>
+        <i class="fas fa-envelope icon"></i>
+      </div>
+
+      <!-- PASSWORD (FIXED) -->
+      <div class="form-group">
+        <input type="password" id="password" name="password" placeholder="Password" required>
+        <i class="fas fa-eye toggle-password icon" onclick="togglePassword()"></i>
+      </div>
+
+      <div class="options">
+        <label><input type="checkbox"> Remember</label>
+        <a href="./forgotpassword.html" class="forgot-password">Forgot?</a>
+      </div>
+
+      <button type="submit" class="login-btn">Sign In</button>
+
+    </form>
+
+    <div class="signup-link">
+      Don't have an account? <a href="./signup.html">Sign up</a> | <a href="../terms-services.html">Terms</a> | <a href="../privacypolicy.html">Privacy</a>
+    </div>
+
+  </div>
+</div>
+
+<script>
+function togglePassword() {
+  const p = document.getElementById("password");
+  const icon = document.querySelector(".toggle-password");
+
+  if (p.type === "password") {
+    p.type = "text";
+    icon.classList.remove("fa-eye");
+    icon.classList.add("fa-eye-slash");
+  } else {
+    p.type = "password";
+    icon.classList.remove("fa-eye-slash");
+    icon.classList.add("fa-eye");
+  }
+}
+
+document.getElementById('loginForm').addEventListener('submit', async function(event) {
+  event.preventDefault();
+
+  const email = document.getElementById('email').value.trim();
+  const password = document.getElementById('password').value;
+
+  if (!email || !password) {
+    alert('Please enter your email and password.');
+    return;
+  }
+
+  try {
+    const response = await fetch('/api/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password })
+    });
+
+    const data = await response.json();
+    if (!response.ok) {
+      alert(data.message || 'Login failed.');
+      return;
+    }
+
+    localStorage.setItem('fundDoorToken', data.token);
+    alert(data.message);
+    window.location.href = '../dashboard.html';
+  } catch (error) {
+    console.error(error);
+    alert('Unable to connect to the server. Please try again.');
+  }
+});
+</script>
+
+</body>
+</html>
