@@ -38,6 +38,14 @@ body { font-family: 'Inter', sans-serif; background: #f4f7f9; min-height: 100vh;
 .footer-links a { color: rgba(255,255,255,0.8); text-decoration: none; }
 .footer-links a:hover { color: #E0FFC2; }
 @media (max-width: 992px) { .stats-grid { grid-template-columns: 1fr; } }
+@media (max-width: 768px) {
+  .dashboard-header h1 { font-size: 2rem; }
+  .dashboard-header { padding: 80px 0 10px; }
+  .stat-card { padding: 20px; }
+  .campaign-item { padding: 16px; }
+  .navbar-collapse { background: #064734; padding: 10px 20px; }
+  .nav-links { flex-direction: column; align-items: flex-start; gap: 10px; }
+}
 </style>
 </head>
 <body>

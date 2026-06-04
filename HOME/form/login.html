@@ -298,17 +298,10 @@ input::placeholder {
 .nav-links a:nth-child(4) { animation-delay: 0.25s; }
 .nav-links a:nth-child(5) { animation-delay: 0.3s; }
 
-html {
-  scroll-behavior: smooth;
+@media (max-width: 480px) {
+  .login-card { padding: 25px 15px; margin: 10px; }
+  .navbar { padding: 0 15px; }
 }
-
-</style>
-</head>
-
-<body>
-
-<nav class="navbar">
-  <a href="../index.html" class="logo">Fund Door</a>
   <div class="nav-links">
     <a href="../index.html">Home</a>
     <a href="../about.html">About</a>
